@@ -123,10 +123,7 @@ Closes ENG-482
 [1-3 sentences: what changed and why, in plain language — the motivation, not a file list]
 
 ## 🏷️ Type of change
-- [ ] ✨ New feature
-- [ ] 🐛 Bug fix
-- [ ] 💥 Breaking change
-- [ ] ♻️ Refactoring
+[Only the applicable type(s), as plain bullets — never render all four as a checkbox list, GitHub counts every `- [ ]` as a task and inflates the PR's task counter ("1 of 4 tasks") even for types that don't apply. Example: `- 🐛 Bug fix`, or two lines if both apply.]
 
 ## 🔍 Key Changes
 - [Bullet per meaningful change, grouped by area if there are several — not a line-by-line diff narration]
@@ -147,7 +144,7 @@ Closes ENG-482
 
 - **Linear issue**: на цьому етапі ти вже запитала про це в Кроці 1, тож просто впиши те, що з'ясувала — ключ задачі (напр. `ENG-482`) або, якщо людина підтвердила відсутність задачі, `N/A`. Ніколи не пиши тут плейсхолдер — ця секція має бути вирішена ще до того, як ти дійшла сюди.
 - **Summary** відповідає на питання "чому цей PR існує", а не "які файли змінилися". Рев'юєр повинен зрозуміти мотивацію ще до читання коду.
-- **Type of change**: чесно відзначай галочки — PR, що одночасно фіксить баг і рефакторить навколишній код, має обидві позначки.
+- **Type of change**: пиши лише ті типи, що реально застосовні, звичайними пунктами списку (`- 🐛 Bug fix`), без синтаксису чекбоксів `- [ ]` — GitHub рахує кожен такий чекбокс як окрему задачу PR, і фіксований список з 4 пунктів завжди показує "1 of 4 tasks" замість чесного стану. PR, що одночасно фіксить баг і рефакторить навколишній код, отримує обидва пункти.
 - **Key Changes** — це список ключових пунктів, а не переказ diff. Групуй пов'язані зміни файлів в один пункт ("Extracted date-formatting logic into a `useFormattedDate` hook and removed the duplicated logic from three components"), а не перелічуй кожен файл.
 - **How to test** мають бути виконувані людиною, яка ніколи не бачила код — називай конкретні сторінки, вхідні дані, очікувані результати. Для зміни в Redux-слайсі чи селекторі без UI-поверхні цілком підходить "run `npm test` and confirm the new cases in `cartSlice.test.ts` pass".
 - **Screenshots**: ніколи не вигадуй і не описуй фейковий скріншот. Твоя задача — лише розпізнати, коли він очікується, і залишити плейсхолдер — реальне зображення додає сама людина.
