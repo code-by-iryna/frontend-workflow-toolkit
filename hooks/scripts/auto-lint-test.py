@@ -12,6 +12,13 @@ PostToolUse hook на matcher "Write|Edit". Після кожної правки
 без додаткового запиту від тебе. Це НЕ Human Gate — це працює мовчки
 для будь-яких правок коду, бо це "всередині лабораторії", а не назовні.
 
+ВАЖЛИВО про формат виводу: для PostToolUse звичайний (не-JSON) stdout
+потрапляє ЛИШЕ в debug-лог і до Claude не доходить. Єдиний спосіб
+віддати результат у контекст — `hookSpecificOutput.additionalContext`.
+До версії 0.6.1 цей скрипт друкував звичайний текст, тому Auto Mode
+фактично не працював: лінт і тести запускались, але їхній результат
+Claude ніколи не бачив.
+
 Якщо у проєкті інші назви npm-скриптів (не "lint"/"test") —
 відредагуй команди нижче вручну.
 """
@@ -59,7 +66,19 @@ def main() -> None:
             run(["npm", "test", "--", "--findRelatedTests", file_path])
         )
 
-    print("\n\n".join(reports))
+    print(
+        json.dumps(
+            {
+                "hookSpecificOutput": {
+                    "hookEventName": "PostToolUse",
+                    "additionalContext": (
+                        "[Auto Mode] Результат лінту/тестів після правки "
+                        f"`{file_path}`:\n\n" + "\n\n".join(reports)
+                    ),
+                }
+            }
+        )
+    )
 
 
 if __name__ == "__main__":

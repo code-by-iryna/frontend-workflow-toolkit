@@ -66,14 +66,25 @@ hook — на відміну від Human Gate для Linear/commit/push, яки
   edge cases, негативні сценарії, збереження звіту).
 - **PreToolUse → `gate-git.py`** (matcher `Bash`): перехоплює будь-яку
   bash-команду, і якщо вона містить `git commit`, `git push`, `git merge`,
-  `gh pr create` або `gh pr merge` — примусово повертає `ask_user`. Все
-  інше (npm, git status/diff/log, читання файлів) пропускається без питань.
+  `gh pr create` або `gh pr merge` — повертає `permissionDecision: "ask"`.
+  Все інше (npm, git status/diff/log, читання файлів) віддається у звичайний
+  permission flow через `"defer"` — свідомо не `"allow"`, щоб не видавати
+  безумовне автосхвалення кожній bash-команді.
 - **PreToolUse → `gate-linear.py`** (matcher `mcp__linear__save_issue`):
-  завжди повертає `ask_user` перед будь-яким записом у Linear.
+  завжди повертає `permissionDecision: "ask"` перед будь-яким записом у Linear.
 - **PostToolUse → `auto-lint-test.py`** (matcher `Write|Edit`): після
   правки файлу з розширенням `.ts`/`.tsx`/`.scss` мовчки запускає
   `npm run lint` (і `npm test -- --findRelatedTests` для `.ts`/`.tsx`),
-  результат повертається Claude як контекст — без питань до тебе.
+  результат віддається Claude через `hookSpecificOutput.additionalContext` —
+  без питань до тебе.
+
+> **Формат виводу hook'ів (виправлено у 0.6.1).** `PreToolUse` читає
+> виключно `hookSpecificOutput.permissionDecision` (`allow`/`deny`/`ask`/
+> `defer`), а `PostToolUse` віддає контекст лише через
+> `hookSpecificOutput.additionalContext` — звичайний stdout там іде тільки
+> в debug-лог. До 0.6.1 усі три скрипти використовували неіснуючі поля
+> (`{"decision": "ask_user"}` і plain stdout), тому Human Gate ніколи не
+> блокував, а результати Auto Mode не доходили до Claude.
 
 ## Налаштування перед першим використанням
 
@@ -90,4 +101,6 @@ hook — на відміну від Human Gate для Linear/commit/push, яки
   лінтом і тестами. `git-workflow` завжди залишає commit/push тобі.
 - Human Gate — це технічний шар (hook), а не лише текстова інструкція:
   навіть якщо Claude "забуде" запитати, hook фізично не дасть виклику
-  пройти без `ask_user`.
+  пройти без підтвердження (`permissionDecision: "ask"`). Це справедливо
+  починаючи з 0.6.1 — до неї формат виводу був невалідний і гейт
+  спрацьовував вхолосту, тримаючись лише на текстових інструкціях skill'ів.
