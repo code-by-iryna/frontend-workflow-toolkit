@@ -1,7 +1,7 @@
 ---
 name: architecture-planner
 description: >-
-  Проєктує архітектуру фічі ДО написання коду: за словесним описом видає план у markdown — структуру папок (Feature-Driven / Colocation: компоненти, хуки, типи, Redux-слайси), схему даних (локальний стан у хуці vs Redux Toolkit), короткий перелік API-ендпоінтів/DTO та чек-лист UI-станів Loading/Error/Empty/Success. ОБОВ'ЯЗКОВО застосовувати щоразу, коли користувач описує нову фічу, екран чи модуль і ще не почав писати код — навіть без слів "архітектура"/"план", а просто "як краще організувати", "з чого почати", "яка структура файлів потрібна". Використовувати ПЕРШИМ у процесі, перед debug-assistant, styling-expert, senior-frontend-standards та jest-rtl-senior-tests. Не використовувати для рефакторингу, дебагу чи рев'ю вже написаного коду.
+  Проєктує архітектуру фічі ДО написання коду: за словесним описом видає план у markdown — структуру папок (Feature-Driven / Colocation: компоненти, хуки, типи, Redux-слайси), схему даних (локальний стан у хуці vs Redux Toolkit), короткий перелік API-ендпоінтів/DTO та чек-лист UI-станів Loading/Error/Empty/Success. ОБОВ'ЯЗКОВО застосовувати щоразу, коли користувач описує нову фічу, екран чи модуль і ще не почав писати код — навіть без слів "архітектура"/"план", а просто "як краще організувати", "з чого почати", "яка структура файлів потрібна". Використовувати ПЕРШИМ у процесі, перед debug-assistant, styling-expert, senior-frontend-standards, jest-rtl-senior-tests, code-reviewer та qa-agent (типовий порядок: architecture-planner → написання коду за senior-frontend-standards + styling-expert → jest-rtl-senior-tests → code-reviewer → qa-agent → git-workflow). Не використовувати для рефакторингу, дебагу чи рев'ю вже написаного коду.
 ---
 
 # Feature Architecture Planner

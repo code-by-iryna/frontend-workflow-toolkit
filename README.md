@@ -27,16 +27,17 @@ SCSS / Jest проєктами. Реалізує гібридний режим *
 | `styling-expert` | Senior-рівень SCSS Modules (токени теми, `breakpoint()` mixin, a11y-фокус) |
 | `debug-assistant` | Точкова діагностика багів React/Next.js/TS/RTK без переписування файлу |
 | `jest-rtl-senior-tests` | Senior unit/integration тести на Jest + RTL |
-| `code-reviewer` | Структуроване ревʼю diff'а (🔴 Critical / 🟡 Suggestions / 🟢 Passed) — вручну АБО напівавтоматично перед описом PR |
+| `code-reviewer` | Структуроване ревʼю diff'а з класифікацією за наслідком (Blocker / Error / Inaccessible / Friction / Hygiene), обов'язковим наслідком для кожної знахідки, перевіркою CI-гейта і декларацією меж охоплення — вручну АБО напівавтоматично перед описом PR |
 | `git-workflow` | Conventional Commits повідомлення + описи PR з diff (текст, без виконання команд) |
 | `linear-task-manager` | Формує та створює issue в Linear, керує статусами через життєвий цикл |
 | `qa-agent` | Повноцінне QA в живому браузері через `playwright`/`chrome-devtools` MCP — тест-план, крос-браузерна перевірка (Chromium/Firefox/WebKit), структурований звіт про баги, збереження звіту у MD-файл |
 
 **Напівавтоматичний Pre-PR крок:** `git-workflow` тепер має Крок 5 —
 перед тим, як згенерувати опис PR (Крок 6), він застосовує критерії
-`code-reviewer` до diff'а. Якщо знайдено 🔴 Critical — зупиняється і
-питає "В коде есть N критических замечаний. Исправим их перед созданием
-PR?", і чекає на відповідь, перш ніж рухатись далі. Це логічний крок
+`code-reviewer` до diff'а. Якщо знайдено блокери (Blocker/Error/Inaccessible)
+— зупиняється і питає "У коді є N блокувальних зауважень
+(Blocker/Error/Inaccessible). Виправимо їх перед створенням PR?", і чекає на
+відповідь, перш ніж рухатись далі. Це логічний крок
 усередині skill'а (виконується самим Claude), а не окремий технічний
 hook — на відміну від Human Gate для Linear/commit/push, який блокується
 жорстко на рівні `hooks.json`.
