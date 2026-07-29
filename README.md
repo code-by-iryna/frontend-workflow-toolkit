@@ -18,10 +18,11 @@ SCSS / Jest проєктами. Реалізує гібридний режим *
 
 ## Компоненти
 
-### Skills (9)
+### Skills (10)
 
 | Skill | Призначення |
 |---|---|
+| `feature-delivery-workflow` | Оркеструє багатокрокову роботу над фічею від старту до PR — персистентний план у `.claude/planning/`, порядок виклику решти скілів, підтвердження перед кожним комітом, обов'язковий `qa-agent` перед PR, синхронізація Linear-задачі з фінальним кодом |
 | `architecture-planner` | Проєктування архітектури фічі ДО написання коду (структура папок, дані, UI-стани) |
 | `senior-frontend-standards` | Senior-стандарти для React/Next.js/TS/RTK коду (без `any`/`enum`, хуки, мемоізація) |
 | `styling-expert` | Senior-рівень SCSS Modules (токени теми, `breakpoint()` mixin, a11y-фокус) |
