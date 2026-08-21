@@ -25,7 +25,7 @@ SCSS / Jest проєктами. Реалізує гібридний режим *
 | `pr-review-resolver` | Оркеструє повний цикл роботи над зауваженнями рев'ювера PR — збір коментарів через `gh`, критична оцінка, план по блоках через `feature-delivery-workflow`, обов'язкове делегування фіксу відповідному скілу ПЕРЕД кожним блоком, коміт через `git-workflow` після підтвердження, регресія через `qa-agent`, реакції/відповіді на GitHub лише після дозволу, ретроспектива в `.claude/upgrade-skills/` |
 | `feature-delivery-workflow` | Оркеструє багатокрокову роботу над фічею від старту до PR — персистентний план у `.claude/planning/`, порядок виклику решти скілів, підтвердження перед кожним комітом, обов'язковий `qa-agent` перед PR, синхронізація Linear-задачі з фінальним кодом |
 | `architecture-planner` | Проєктування архітектури фічі ДО написання коду (структура папок, дані, UI-стани) |
-| `senior-frontend-standards` | Senior-стандарти для React/Next.js/TS/RTK коду (без `any`/`enum`, хуки, мемоізація) |
+| `senior-frontend-standards` | Senior-стандарти для React/Next.js/TS/RTK коду (без `any`/`enum`, хуки, мемоізація, принципи проєктування GRASP/SOLID/DRY/KISS/YAGNI) |
 | `styling-expert` | Senior-рівень SCSS Modules (токени теми, `breakpoint()` mixin, a11y-фокус) |
 | `debug-assistant` | Точкова діагностика багів React/Next.js/TS/RTK без переписування файлу |
 | `jest-rtl-senior-tests` | Senior unit/integration тести на Jest + RTL |
