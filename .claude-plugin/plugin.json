@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow-toolkit",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "Набір senior frontend skills для React/Next.js/Redux Toolkit/TypeScript/SCSS/Jest/QA — з Auto Mode (авто-лінт/авто-тест після правки коду), Human Gate (жорстке підтвердження перед Linear/commit/push/PR), feature-delivery-workflow для оркестрації багатокрокових фіч та pr-review-resolver для повного циклу роботи над рев'ю PR.",
   "author": {
     "name": "Iryna"
