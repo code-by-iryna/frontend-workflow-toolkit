@@ -6,7 +6,10 @@
   "plugins": [
     {
       "name": "frontend-workflow-toolkit",
-      "source": "."
+      "source": {
+        "source": "github",
+        "repo": "code-by-iryna/frontend-workflow-toolkit"
+      }
     }
   ]
 }
