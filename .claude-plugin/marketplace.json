@@ -7,8 +7,9 @@
     {
       "name": "frontend-workflow-toolkit",
       "source": {
-        "source": "github",
-        "repo": "code-by-iryna/frontend-workflow-toolkit"
+        "source": "git-subdir",
+        "url": "https://github.com/code-by-iryna/frontend-workflow-toolkit.git",
+        "path": "."
       }
     }
   ]
